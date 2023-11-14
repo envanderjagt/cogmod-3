@@ -9,14 +9,9 @@ class Addition(ACTR):
   DMNoise(memory,noise=0.3)
   
   def init():
-    memory.add('count 0 1')
-    memory.add('count 1 2')
-    memory.add('count 2 3')
-    memory.add('count 3 4')
-    memory.add('count 4 5')
-    memory.add('count 5 6')
-    memory.add('count 6 7')
-    memory.add('count 7 8')
+    for i in range(100):
+      string = 'count %s %s' % (str(i),str(i+1))
+      memory.add(string)
   
   def initializeAddition(goal='add ?num1 ?num2 count:None?count sum:None?sum'):
     goal.modify(count=0,sum=num1)
@@ -38,6 +33,9 @@ class Addition(ACTR):
 
 model=Addition()
 ccm.log_everything(model)
-model.goal.set('add 5 2 count:None sum:None')
+x = str(input("first: "))
+y = str(input("second: "))
+string = 'add %s %s count:None sum:None' % (str(x),str(y))
+model.goal.set(string)
 model.run()
 
