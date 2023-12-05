@@ -8,6 +8,12 @@ class ModelHanoi(ACTR):
     
     def set_subGoal1(goal="current:A123BC target:!A123BC", subGoal1 = None):
         subGoal1.set('A1C1') #the biggest disk needs to go to the rigth peg
+
+    #to simulate the first move wrong, as most people do, we do now this step:
+    def move_disk3wrong(goal="current:A123BC target:!A123BC" subGoal1='A1C1'):
+        goal.modify(current="A12B3C")
+        print("Disk 3 was moved to peg B")
+        print("Peg A has disks[1,2], peg B has disks [3], peg C has disks []")
         
     def set_subGoal2(goal="current:!A1B2C3", subGoal1="A1C1", subGoal2 = None):
         subGoal2.set("A2B2") #Disk 2 is in the way of disk 1 so we need to put it on a different peg where it will not be in the way anymore
